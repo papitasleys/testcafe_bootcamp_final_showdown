@@ -45,9 +45,9 @@ Verify your installation
 
 ## Windows
 
-Open command promp an run the following command
+Open command promp and run the following command
 
-    shudown -s -t 0
+    shutdown -s -t 0
 
 And go cry in the corner
 
