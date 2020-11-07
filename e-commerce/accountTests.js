@@ -1,4 +1,4 @@
-import page from './pageModel';
+import page from './pageModel_miCuenta';
 import { data } from './data';
 
 fixture('Pruebas del módulo mi cuenta').page(
@@ -6,47 +6,118 @@ fixture('Pruebas del módulo mi cuenta').page(
 );
 
 test('Crear una cuenta nueva', async (t) => {
-    await t.click(page.signIn_link);
-    console.log('Correo: ', data.email);
-    console.log('First Name: ', data.firstName);
-    console.log('Last Name: ', data.lastName);
-    console.log('Address: ', data.pbox);
-    console.log('City: ', data.city);
+    console.log('signin in');
+    await t.click(page.linkSignIn);
 
-    await t
-        .typeText(page.email_input, data.email)
-        .click(page.createAccount_btn)
-      //  .debug()
-        .takeScreenshot();
+    const optionState = page.selectState.find('option');
+    const optionCountry = page.selectCountry.find('option');
 
+    console.log(data.email);
+    await t.typeText(page.inputEmail, data.email).click(page.btnCreateAccount);
+
+    console.log('email is the same ' + data.email);
     await t
-        .expect(page.email_form.value)
+        .expect(page.inputFormEmail.value)
         .contains(data.email)
-        .expect(page.email_form.hasAttribute('readonly'))
-        .notOk()
+        .expect(page.inputFormEmail.hasAttribute('readonly'))
+        .notOk();
 
-        .typeText(page.firstName_input, data.firstName)
-        .typeText(page.lastName_input, data.lastName)
+    console.log(data.firstName + data.lastName);
+    await t
+        .typeText(page.inputFirstName, data.firstName)
+        .typeText(page.inputLastNme, data.lastName);
 
-        .expect(page.firstName_Address.value)
+    console.log('first and las names are copied to address form');
+    await t
+        .expect(page.inputAddressFirstName.value)
         .contains(data.firstName)
-        .expect(page.lastName_Address.value)
-        .contains(data.lastName)
+        .expect(page.inputAddressLastName.value)
+        .contains(data.lastName);
 
-        .typeText(page.password_input, data.password)
+    console.log(data.password);
+    await t.typeText(page.inputPassword, data.password);
 
-        .typeText(page.address, data.pbox)
-        .expect(page.address.value)
-        .contains(data.pbox)
+    console.log(data.address);
+    await t
+        .typeText(page.inputAddressLine1, data.address)
+        .expect(page.inputAddressLine1.value)
+        .contains(data.address);
 
-        .typeText(page.city, data.city)
-        .expect(page.city.value)
+    console.log(data.city);
+    await t
+        .typeText(page.inputCity, data.city)
+        .expect(page.inputCity.value)
         .contains(data.city);
+
+    console.log(data.state);
+    await t
+        .click(page.selectState)
+        .click(optionState.withText(data.state))
+        .expect(page.selectState.value)
+        .eql(data.stateCode);
+
+    console.log(data.zipCode);
+    await t
+        .typeText(page.inputZIP, data.zipCode)
+        .expect(page.inputZIP.value)
+        .contains(data.zipCode);
+
+    console.log(data.country);
+    await t
+        .click(page.selectCountry)
+        .click(optionCountry.withText(data.country))
+        .expect(page.selectCountry.value)
+        .eql(data.countryCode);
+
+    console.log(data.mobilePhone);
+    await t
+        .typeText(page.inputMobilePhone, data.mobilePhone)
+        .expect(page.inputMobilePhone.value)
+        .contains(data.mobilePhone);
+
+    console.log(data.addressAlias);
+    await t
+        .click(page.inputAddressAlias)
+        .pressKey('delete')
+        .typeText(page.inputAddressAlias, data.addressAlias)
+        .expect(page.inputAddressAlias.value)
+        .contains(data.addressAlias);
+
+    await t
+        .click(page.btnRegister)
+        .expect(page.txtWelcome.innerText)
+        .contains('Welcome to your account')
+        .takeScreenshot();
+    console.log(page.txtWelcome.innerText);
 });
 
-test('Log in en mi cuenta creada', async (t) => {});
+test('Log in en mi cuenta creada', async (t) => {
+    await t.click(page.linkSignIn);
+    await t
+        .typeText(page.inputEmailAccount, data.email)
+        .typeText(page.inputPasswordAccount, data.password)
+        .click(page.btnSignIn)
+        .expect(page.txtWelcome.innerText)
+        .contains('Welcome to your account')
+        .takeScreenshot();
+});
 
-test('Log out de mi cuenta', async (t) => {});
+test('Log out de mi cuenta', async (t) => {
+    await t.click(page.linkSignIn);
+    await t
+        .typeText(page.inputEmailAccount, data.email)
+        .typeText(page.inputPasswordAccount, data.password)
+        .click(page.btnSignIn)
+        .expect(page.txtWelcome.innerText)
+        .contains('Welcome to your account');
+    await t
+        .click(page.btnSignOut)
+        .expect(page.btnSignIn.visible)
+        .ok()
+        .expect(page.btnSignOut.visible)
+        .notOk()
+        .takeScreenshot();
+});
 
 test('Crear cuenta con un correo ya existente', async (t) => {});
 
