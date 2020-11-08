@@ -1,6 +1,6 @@
 # Testcafe Bootcamp
 
-Compilation of exercises part of the  QA MindLabs' testcafe bootcamp
+Final project part of the  QA MindLabs' testcafe bootcamp
 made by the one and only papitas leys excusez moi
 
 ## Testcafe installation
