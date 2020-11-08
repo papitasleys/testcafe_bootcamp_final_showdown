@@ -11,6 +11,7 @@ class Page {
         this.linkPayCheck = Selector('a').withText('Pay by check');
         this.btnConfirmOrder = Selector('button.button-medium');
         this.txtOrderSuccess = Selector('.alert');
+        this.txtFancyError = Selector('.fancybox-error');
     }
 }
 
