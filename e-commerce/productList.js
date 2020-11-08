@@ -15,7 +15,8 @@ test('search something', async (t) => {
         .eql(data.productQuery)
         .click(pageHome.btnSearch)
         .expect(pageProducts.txtSearchHeader.innerText)
-        .contains(data.productQuery.toUpperCase());
+        .contains(data.productQuery.toUpperCase())
+        .takeScreenshot();
 });
 
 test('sort by name search', async (t) => {
@@ -26,14 +27,15 @@ test('sort by name search', async (t) => {
         .expect(pageHome.inputSearch.value)
         .eql(data.productName)
         .click(pageHome.btnSearch)
-        .expect(pageProducts.txtProductName.nth(1).innerText)
+        .expect(pageProducts.txtProductName.nth(0).innerText)
         .notContains('Blouse');
 
     await t
         .click(pageProducts.selectSortResults)
         .click(optionSort.withText('Product Name: A to Z'))
-        .expect(pageProducts.txtProductName.nth(1).innerText)
-        .contains('Blouse');
+        .expect(pageProducts.txtProductName.nth(0).innerText)
+        .contains('Blouse')
+        .takeScreenshot();
 });
 
 test('sort by price', async (t) => {
@@ -51,5 +53,6 @@ test('sort by price', async (t) => {
         .click(pageProducts.selectSortResults)
         .click(optionSort.withText('Price: Lowest first'))
         .expect(pageProducts.txtProductPrice.nth(1).innerText)
-        .contains('16.40');
+        .contains('16.40')
+        .takeScreenshot();
 });

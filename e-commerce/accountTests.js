@@ -88,7 +88,6 @@ test('Crear una cuenta nueva', async (t) => {
         .expect(page.txtWelcome.innerText)
         .contains('Welcome to your account')
         .takeScreenshot();
-    console.log(page.txtWelcome.innerText);
 });
 
 test('Log in en mi cuenta creada', async (t) => {
@@ -161,5 +160,5 @@ test('Validar recuperar un password inválido', async (t) => {
 
     await t
         .expect(page.txtForgotAlert.innerText)
-        .contains('Invalid email address');
+        .contains('no account registered');
 });
