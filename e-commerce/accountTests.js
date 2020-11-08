@@ -161,5 +161,5 @@ test('Validar recuperar un password inválido', async (t) => {
 
     await t
         .expect(page.txtForgotAlert.innerText)
-        .contains('error');
+        .contains('Invalid email address');
 });

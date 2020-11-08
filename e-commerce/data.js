@@ -23,7 +23,7 @@ let data = {
     facebookUrl: 'facebook.com/groups/525066904174158',
     twitterUrl: 'twitter.com/seleniumfrmwrk',
     youtubeUrl: '/channel/UCHl59sI3SRjQ-qPcTrgt0tA',
-    googlePlusUrl: '/plus.google.com/111979135243110831526',
+    googlePlusUrl: 'plus.google.com/111979135243110831526',
     validAccountEmail: 'dummy684597@mailinator.com',
     //querys
     productQuery: 'pink',

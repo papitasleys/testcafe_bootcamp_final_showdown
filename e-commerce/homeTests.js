@@ -104,7 +104,8 @@ test('facebook social', async (t) => {
     await t
         .click(page.linkFacebook)
         .expect(getLocation()).contains(data.facebookUrl)
-        .takeScreenshot();
+        .takeScreenshot()
+        .closeWindow();
 });
 
 test('twitter social', async (t) => {
@@ -112,7 +113,8 @@ test('twitter social', async (t) => {
     await t
         .click(page.linkTwitter)
         .expect(getLocation()).contains(data.twitterUrl)
-        .takeScreenshot();
+        .takeScreenshot()
+        .closeWindow();
 });
 
 test('youtube social', async (t) => {
@@ -120,7 +122,8 @@ test('youtube social', async (t) => {
     await t
         .click(page.linkYoutube)
         .expect(getLocation()).contains(data.youtubeUrl)
-        .takeScreenshot();
+        .takeScreenshot()
+        .closeWindow();
 });
 
 test('google+ social', async (t) => {
