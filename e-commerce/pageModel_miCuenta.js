@@ -24,15 +24,22 @@ class Page {
         this.inputAddressAlias = Selector('#alias');
 
         this.btnRegister = Selector('#submitAccount');
-        this.txtWelcome = Selector('.info-account')
+        this.txtWelcome = Selector('.info-account');
 
         // sign in elements
         this.inputEmailAccount = Selector('#email');
         this.inputPasswordAccount = Selector('#passwd');
         this.btnSignIn = Selector('#SubmitLogin');
+        this.btnForgotPassword = Selector('.lost_password').find('a');
+        this.txtForgotHeader = Selector('.page-subheading');
+        this.btnRetrievePassword = Selector ('button.btn:nth-child(1)');
+        this.txtForgotAlert = Selector('.alert');
 
         //sing out element, all of them
         this.btnSignOut = Selector('.logout');
+
+        //error
+        this.txtCreateAccountError = Selector('#create_account_error');
     }
 }
 

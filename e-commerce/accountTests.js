@@ -119,10 +119,47 @@ test('Log out de mi cuenta', async (t) => {
         .takeScreenshot();
 });
 
-test('Crear cuenta con un correo ya existente', async (t) => {});
+test('Crear cuenta con un correo ya existente', async (t) => {
+    await t.click(page.linkSignIn);
 
-test('Validar recuperar un pasword válido', async (t) => {});
+    console.log(data.validAccountEmail);
+    await t
+        .typeText(page.inputEmail, data.validAccountEmail)
+        .click(page.btnCreateAccount);
 
-test('Validar recuperar un password inválido', async (t) => {});
+    await t
+        .expect(page.txtCreateAccountError.innerText)
+        .contains('this email address has already been registered');
+});
 
-test('Cambiar información de la cuenta', async (t) => {});
+test('Validar recuperar un password válido', async (t) => {
+    await t.click(page.linkSignIn);
+
+    await t.click(page.btnForgotPassword);
+
+    await t
+        .expect(page.txtForgotHeader.innerText)
+        .contains('FORGOT YOUR PASSWORD')
+        .typeText(page.inputEmailAccount, data.validAccountEmail)
+        .click(page.btnRetrievePassword);
+
+    await t
+        .expect(page.txtForgotAlert.innerText)
+        .contains('confirmation email has been sent');
+});
+
+test('Validar recuperar un password inválido', async (t) => {
+    await t.click(page.linkSignIn);
+
+    await t.click(page.btnForgotPassword.nth(0));
+
+    await t
+        .expect(page.txtForgotHeader.innerText)
+        .contains('FORGOT YOUR PASSWORD')
+        .typeText(page.inputEmailAccount, 'any@email.mx')
+        .click(page.btnRetrievePassword);
+
+    await t
+        .expect(page.txtForgotAlert.innerText)
+        .contains('error');
+});

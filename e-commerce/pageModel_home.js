@@ -27,7 +27,6 @@ class Page {
         this.listStoreSections = Selector('#htmlcontent_home');
         this.btnAddToCart = Selector('span').withText('Add to cart');
         this.btnCheckout = Selector('.button-medium');
-            
 
         // footer elements
         this.textFacebook = Selector('#facebook_block');

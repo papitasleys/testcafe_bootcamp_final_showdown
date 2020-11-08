@@ -4,7 +4,7 @@ class Page {
     constructor() {
         this.btnProceedCheckout = Selector('.standard-checkout');
         this.txtCartSummary = Selector('#cart_title');
-        this.txtCartHeader = Selector ('.page-heading');
+        this.txtCartHeader = Selector('.page-heading');
         this.btnCheckoutNext = Selector('button.button:nth-child(4)');
         this.checkTermsService = Selector('#cgv');
         this.linkPayBank = Selector('a').withText('Pay by bank wire');

@@ -19,11 +19,15 @@ let data = {
     countryCode: '21',
     mobilePhone: '2125459878',
     addressAlias: 'generic alias',
+    //expected urls
     facebookUrl: 'facebook.com/groups/525066904174158',
     twitterUrl: 'twitter.com/seleniumfrmwrk',
     youtubeUrl: '/channel/UCHl59sI3SRjQ-qPcTrgt0tA',
     googlePlusUrl: '/plus.google.com/111979135243110831526',
-    validAccountEmail: 'dummy684597@mailinator.com'
+    validAccountEmail: 'dummy684597@mailinator.com',
+    //querys
+    productQuery: 'pink',
+    productName: 'DRESS',
 };
 
 export { data };
