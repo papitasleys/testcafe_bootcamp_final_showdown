@@ -25,11 +25,18 @@ class Page {
         this.linkTabBestSellers = Selector('a.blockbestsellers');
         this.linkTabPopular = Selector('a.homefeatured');
         this.listStoreSections = Selector('#htmlcontent_home');
+        this.btnAddToCart = Selector('span').withText('Add to cart');
+        this.btnCheckout = Selector('.button-medium');
+            
 
         // footer elements
         this.textFacebook = Selector('#facebook_block');
         this.textHomeInfo = Selector('#cmsinfo_block');
         this.blockSocialIcons = Selector('#social_block');
+        this.linkFacebook = Selector('.facebook');
+        this.linkYoutube = Selector('.youtube');
+        this.linkTwitter = Selector('.twitter');
+        this.linkGooglePlus = Selector('.google-plus');
         this.inputNewsLetterEmail = Selector('#newsletter-input');
         this.btnNewsletterSubmit = Selector('button.btn:nth-child(2)');
         this.textFooterStoreInfo = Selector('#block_contact_infos');
